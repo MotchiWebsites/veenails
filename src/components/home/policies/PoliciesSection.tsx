@@ -1,14 +1,17 @@
-import Link from "next/link";
 import SectionBlock from "@/components/home/SectionBlock";
 import ScrollLink from "@/components/ui/ScrollLink";
-
-import { policyItems } from "@/content/policies/policies";
 import ButtonLink from "@/components/ui/ButtonLink";
 
-export default function PoliciesSection({ id = "policies" }: { id?: string }) {
+import { getPolicies } from "@/utils/queries/getPolicies";
+import { PolicyItem } from "@/utils/types/policyItem";
+
+export default async function PoliciesSection({ id = "policies" }: { id?: string }) {
     const redirectURL =
         process.env.NEXT_PUBLIC_BOOKING_URL ||
         "https://booking.veenailstudio.ca";
+
+    const policyItems: PolicyItem[] = await getPolicies();
+
     return (
         <SectionBlock
             title="Booking Policies"
@@ -16,7 +19,7 @@ export default function PoliciesSection({ id = "policies" }: { id?: string }) {
             background="bg-surface"
             id={id}
         >
-            <div className="mt-8 grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3 text-left">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-3 text-left">
                 {policyItems.map((item) => (
                     <div
                         key={item.title}
