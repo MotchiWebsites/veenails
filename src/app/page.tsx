@@ -2,7 +2,7 @@ import SectionBlock from "@/components/home/SectionBlock";
 
 import HeroSection from "@/components/home/hero/HeroSection";
 import PoliciesSection from "@/components/home/policies/PoliciesSection";
-import AftercareSection from "@/components/home/aftercare/AtercareSection";
+import AftercareSection from "@/components/home/aftercare/AftercareSection";
 import TestimonialCarousel from "@/components/home/testimonials/TestimonialCarousel";
 import ServiceCard from "@/components/home/services/ServiceCard";
 import BookingCTA from "@/components/home/bookingCta/BookingCTA";

@@ -1,4 +1,4 @@
-export interface PolicyItem {
+export interface ContentItem {
     title: string;
     description: string;
 }

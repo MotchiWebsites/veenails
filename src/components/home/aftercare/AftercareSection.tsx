@@ -1,7 +1,12 @@
 import SectionBlock from "@/components/home/SectionBlock";
-import { aftercareItems } from "@/content/home/aftercare";
 
-export default function AftercareSection() {
+import { getAftercare } from "@/utils/queries/getAftercare";
+import { ContentItem } from "@/utils/types/contentItem";
+
+export default async function AftercareSection() {
+
+    const aftercareItems: ContentItem[] = await getAftercare();
+    
     return (
         <SectionBlock
             title="Aftercare Instructions"

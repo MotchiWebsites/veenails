@@ -3,14 +3,14 @@ import ScrollLink from "@/components/ui/ScrollLink";
 import ButtonLink from "@/components/ui/ButtonLink";
 
 import { getPolicies } from "@/utils/queries/getPolicies";
-import { PolicyItem } from "@/utils/types/policyItem";
+import { ContentItem } from "@/utils/types/contentItem";
 
 export default async function PoliciesSection({ id = "policies" }: { id?: string }) {
     const redirectURL =
         process.env.NEXT_PUBLIC_BOOKING_URL ||
         "https://booking.veenailstudio.ca";
 
-    const policyItems: PolicyItem[] = await getPolicies();
+    const policyItems: ContentItem[] = await getPolicies();
 
     return (
         <SectionBlock
