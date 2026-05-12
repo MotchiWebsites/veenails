@@ -7,10 +7,16 @@ import TestimonialCarousel from "@/components/home/testimonials/TestimonialCarou
 import ServiceCard from "@/components/home/services/ServiceCard";
 import BookingCTA from "@/components/home/bookingCta/BookingCTA";
 import FAQSection from "@/components/home/faq/FAQSection";
-
 import { serviceItems } from "@/content/home/services";
 
-export default function Home() {
+
+import { getTestimonials } from "@/utils/queries/getTestimonials";
+import { TestimonialItem } from "@/utils/types/testimonialItem";
+
+
+export default async function Home() {
+    const testimonials: TestimonialItem[] = await getTestimonials();
+
     return (
         <main className="min-h-screen bg-background text-foreground flex flex-col space-y-12 md:space-y-18">
             {/* Hero */}
@@ -29,7 +35,9 @@ export default function Home() {
                 background="bg-surface"
                 id="testimonials"
             >
-                <TestimonialCarousel />
+                <TestimonialCarousel 
+                    testimonials={testimonials}
+                />
             </SectionBlock>
 
             {/* Services */}
