@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { DesignTier } from "@/content/pricing/pricing";
+import type { DesignTier } from "@/utils/types/pricingItem";
 
 export default function DesignTierCard({ tier }: { tier: DesignTier }) {
     return (

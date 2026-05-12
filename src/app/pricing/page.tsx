@@ -2,16 +2,23 @@ import PricingSection from "@/components/pricing/PricingSection";
 import PricingGroupCard from "@/components/pricing/PricingGroupCard";
 import DesignTierCard from "@/components/pricing/DesignTierCard";
 import PolicyNote from "@/components/pricing/PolicyNote";
-import { pricingGroups, designTiers } from "@/content/pricing/pricing";
+
+import { getPricing, getDesignTiers } from "@/utils/queries/getPricing";
 import { getPolicies } from "@/utils/queries/getPolicies";
+
+import type { PricingGroup, DesignTier } from "@/utils/types/pricingItem";
 import { ContentItem } from "@/utils/types/contentItem";
+
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
 
 export default async function PricingPage() {
-    
+    const pricingGroups: PricingGroup[] = await getPricing();
+    const designTiers: DesignTier[] = await getDesignTiers();
     const policyItems: ContentItem[] = await getPolicies();
-    
+
+    const activeDesignTiers = designTiers.filter((tier) => tier.active);
+
     return (
         <main className="min-h-screen bg-background text-foreground py-16 space-y-16">
             <FloatingSectionNav
@@ -37,20 +44,20 @@ export default async function PricingPage() {
                 background="bg-surface"
             >
                 <div className="grid gap-6 lg:grid-cols-2">
-                    {pricingGroups.map((group) => (
-                        <PricingGroupCard
-                            key={group.id}
-                            group={group}
-                            id={
-                                group.id === "removals" ? "removals" : undefined
-                            }
-                            tierSummary={
-                                group.id === "removals"
-                                    ? undefined
-                                    : designTiers.filter((tier) => tier.active)
-                            }
-                        />
-                    ))}
+                    {pricingGroups.map((group) => {
+                        // Supabase group IDs are UUIDs, so use the title for now
+                        // to identify the Removals section until a stable slug column is added.
+                        const isRemovalsGroup = group.title.toLowerCase() === "removals";
+
+                        return (
+                            <PricingGroupCard
+                                key={group.id}
+                                group={group}
+                                id={isRemovalsGroup ? "removals" : undefined}
+                                tierSummary={isRemovalsGroup ? undefined : activeDesignTiers}
+                            />
+                        );
+                    })}
                 </div>
             </PricingSection>
 
@@ -61,11 +68,9 @@ export default async function PricingPage() {
                 background="bg-surface-2"
             >
                 <div className="grid gap-6 xl:gap-12 md:grid-cols-2 max-w-5xl mx-auto space-evenly">
-                    {designTiers
-                        .filter((tier) => tier.active)
-                        .map((tier) => (
-                            <DesignTierCard key={tier.id} tier={tier} />
-                        ))}
+                    {activeDesignTiers.map((tier) => (
+                        <DesignTierCard key={tier.id} tier={tier} />
+                    ))}
                 </div>
             </PricingSection>
 
