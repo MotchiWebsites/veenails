@@ -7,7 +7,9 @@ import TestimonialCarousel from "@/components/home/testimonials/TestimonialCarou
 import ServiceCard from "@/components/home/services/ServiceCard";
 import BookingCTA from "@/components/home/bookingCta/BookingCTA";
 import FAQSection from "@/components/home/faq/FAQSection";
-import { serviceItems } from "@/content/home/services";
+
+import { ServiceItem } from "@/utils/types/serviceItem";
+import { getServices } from "@/utils/queries/getService";
 
 
 import { getTestimonials } from "@/utils/queries/getTestimonials";
@@ -16,6 +18,11 @@ import { TestimonialItem } from "@/utils/types/testimonialItem";
 
 export default async function Home() {
     const testimonials: TestimonialItem[] = await getTestimonials();
+    const rawServiceItems = await getServices();
+    const serviceItems: ServiceItem[] = rawServiceItems.map((item) => ({
+        name: item.title,
+        description: item.service_description,
+    }));
 
     return (
         <main className="min-h-screen bg-background text-foreground flex flex-col space-y-12 md:space-y-18">
