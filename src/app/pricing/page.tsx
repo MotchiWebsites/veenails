@@ -1,14 +1,17 @@
-import ButtonLink from "@/components/ui/ButtonLink";
 import PricingSection from "@/components/pricing/PricingSection";
 import PricingGroupCard from "@/components/pricing/PricingGroupCard";
 import DesignTierCard from "@/components/pricing/DesignTierCard";
 import PolicyNote from "@/components/pricing/PolicyNote";
 import { pricingGroups, designTiers } from "@/content/pricing/pricing";
-import { policyItems } from "@/content/policies/policies";
+import { getPolicies } from "@/utils/queries/getPolicies";
+import { ContentItem } from "@/utils/types/contentItem";
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
 
-export default function PricingPage() {
+export default async function PricingPage() {
+    
+    const policyItems: ContentItem[] = await getPolicies();
+    
     return (
         <main className="min-h-screen bg-background text-foreground py-16 space-y-16">
             <FloatingSectionNav
