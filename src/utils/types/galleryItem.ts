@@ -3,7 +3,7 @@ export interface GalleryImage {
     alt: string;
     size?: "square" | "tall" | "wide";
     caption?: string;
-};
+}
 
 export interface GalleryGroup {
     title: string;
@@ -11,4 +11,4 @@ export interface GalleryGroup {
     description: string;
     background?: "bg-background" | "bg-surface" | "bg-surface-2";
     images: GalleryImage[];
-};
+}
