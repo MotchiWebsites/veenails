@@ -2,19 +2,17 @@
 
 import Image from "next/image";
 
-
-import { TestimonialItem } from "@/utils/types/testimonialItem";
-import { getTestimonials } from "@/utils/queries/getTestimonials";
-import "./testimonials.css";
-
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { Navigation, Pagination, Autoplay, A11y, EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import type { TestimonialItem } from "@/utils/types/testimonialItem";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import 'swiper/css/effect-coverflow';
+import "./testimonials.css";
 
 export default function TestimonialCarousel({testimonials}: {testimonials: TestimonialItem[]}) {
     

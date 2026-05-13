@@ -3,7 +3,7 @@ import ScrollLink from "@/components/ui/ScrollLink";
 import ButtonLink from "@/components/ui/ButtonLink";
 
 import { getPolicies } from "@/utils/queries/getPolicies";
-import { ContentItem } from "@/utils/types/contentItem";
+import type { ContentItem } from "@/utils/types/contentItem";
 
 export default async function PoliciesSection({ id = "policies" }: { id?: string }) {
     const redirectURL =

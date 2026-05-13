@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+
 import DropdownItem from "@/components/ui/DropdownItem";
+
 import type { FAQItem } from "@/utils/types/faqItem";
 
 export default function FAQItem({

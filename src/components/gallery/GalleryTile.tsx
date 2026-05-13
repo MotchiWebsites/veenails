@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import { GalleryImage } from "@/content/gallery/gallery";
+import type { GalleryImage } from "@/utils/types/galleryItem";
 
 function getTileClass(index: number) {
     const patterns = [

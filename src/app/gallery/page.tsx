@@ -1,8 +1,9 @@
 import GallerySection from "@/components/gallery/GallerySection";
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
-import { GalleryGroup } from "@/utils/types/galleryItem";
+
 import { getGallery } from "@/utils/queries/getGallery";
+import type { GalleryGroup } from "@/utils/types/galleryItem";
 
 export default async function GalleryPage() {
 
