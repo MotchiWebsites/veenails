@@ -2,15 +2,27 @@ import SectionBlock from "@/components/home/SectionBlock";
 
 import HeroSection from "@/components/home/hero/HeroSection";
 import PoliciesSection from "@/components/home/policies/PoliciesSection";
-import AftercareSection from "@/components/home/aftercare/AtercareSection";
+import AftercareSection from "@/components/home/aftercare/AftercareSection";
 import TestimonialCarousel from "@/components/home/testimonials/TestimonialCarousel";
 import ServiceCard from "@/components/home/services/ServiceCard";
 import BookingCTA from "@/components/home/bookingCta/BookingCTA";
 import FAQSection from "@/components/home/faq/FAQSection";
 
-import { serviceItems } from "@/content/home/services";
+import { getServices } from "@/utils/queries/getService";
+import type { ServiceItem } from "@/utils/types/serviceItem";
 
-export default function Home() {
+import { getTestimonials } from "@/utils/queries/getTestimonials";
+import type { TestimonialItem } from "@/utils/types/testimonialItem";
+
+
+export default async function Home() {
+    const testimonials: TestimonialItem[] = await getTestimonials();
+    const rawServiceItems = await getServices();
+    const serviceItems: ServiceItem[] = rawServiceItems.map((item) => ({
+        name: item.title,
+        description: item.service_description,
+    }));
+
     return (
         <main className="min-h-screen bg-background text-foreground flex flex-col space-y-12 md:space-y-18">
             {/* Hero */}
@@ -29,7 +41,9 @@ export default function Home() {
                 background="bg-surface"
                 id="testimonials"
             >
-                <TestimonialCarousel />
+                <TestimonialCarousel 
+                    testimonials={testimonials}
+                />
             </SectionBlock>
 
             {/* Services */}

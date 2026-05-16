@@ -150,7 +150,7 @@ export default function Navbar() {
                                 className="rounded-full border-2 border-border"
                             />
                             <p className="text-base font-semibold">
-                                Vee's Nail Studio
+                                Vee&apos;s Nail Studio
                             </p>
                         </Link>
                         <Hamburger

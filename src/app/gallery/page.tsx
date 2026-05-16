@@ -1,9 +1,14 @@
 import GallerySection from "@/components/gallery/GallerySection";
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
-import { gallerySections } from "@/content/gallery/gallery";
 
-export default function GalleryPage() {
+import { getGallery } from "@/utils/queries/getGallery";
+import type { GalleryGroup } from "@/utils/types/galleryItem";
+
+export default async function GalleryPage() {
+
+    const gallerySections: GalleryGroup[] = await getGallery();
+
     return (
         <main className="min-h-screen bg-background text-foreground py-16 space-y-16">
             <FloatingSectionNav

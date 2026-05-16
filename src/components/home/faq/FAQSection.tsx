@@ -1,8 +1,10 @@
 import SectionBlock from "@/components/home/SectionBlock";
-import FAQItem from "@/components/home/faq/FAQItem";
-import { faqItems } from "@/content/home/faq";
+import FAQItem from "./FAQItem";
+import { getFAQs } from "@/utils/queries/getFAQs";
 
-export default function FAQSection({ id = "" }: { id?: string }) {
+export default async function FAQSection({ id = "" }: { id?: string }) {
+    const faqItems = await getFAQs();
+
     return (
         <SectionBlock
             id={id}

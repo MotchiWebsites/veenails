@@ -1,6 +1,6 @@
-import { PricingGroup } from "@/content/pricing/pricing";
-import type { DesignTier } from "@/content/pricing/pricing";
 import Link from "next/link";
+
+import type { PricingGroup, DesignTier } from "@/utils/types/pricingItem";
 
 export default function PricingGroupCard({
     group,

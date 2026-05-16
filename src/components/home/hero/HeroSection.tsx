@@ -34,8 +34,8 @@ export default function HeroSection({ id = "" }: { id?: string }) {
                                 Meet Doupi!
                             </p>
                             <p className="mt-1 text-sm leading-relaxed text-muted">
-                                Doupi is my new little pet assistant (but she's
-                                mostly there for the cuddles). She's super
+                                Doupi is my new little pet assistant (but she&apos;s
+                                mostly there for the cuddles). She&apos;s super
                                 friendly! If you have allergies, a fear of dogs,
                                 or would simply prefer a dog-free visit, please
                                 let us know before booking and we&apos;ll do our

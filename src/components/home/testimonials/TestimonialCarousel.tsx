@@ -2,19 +2,20 @@
 
 import Image from "next/image";
 
-import { testimonials } from "@/content/home/testimonials";
-import "./testimonials.css";
-
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { Navigation, Pagination, Autoplay, A11y, EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import type { TestimonialItem } from "@/utils/types/testimonialItem";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import 'swiper/css/effect-coverflow';
+import "./testimonials.css";
 
-export default function TestimonialCarousel() {
+export default function TestimonialCarousel({testimonials}: {testimonials: TestimonialItem[]}) {
+    
     return (
         <div className="mt-10">
             <div className="relative mx-auto max-w-4xl px-0 md:px-16">
@@ -68,8 +69,8 @@ export default function TestimonialCarousel() {
                                 <div className="flex w-full h-full flex-col items-center justify-evenly mb-8 md:mb-0 text-center md:flex-row md:items-center md:gap-8 md:text-left">
                                     <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full border border-border bg-surface sm:h-32 sm:w-32 md:h-44 md:w-44">
                                         <Image
-                                            src={item.image || "/logo.png"}
-                                            alt={item.name}
+                                            src={item.image_url || "/logo.png"}
+                                            alt={item.client_name}
                                             fill
                                             sizes="(max-width: 768px) 128px, 176px"
                                             className="object-cover"
@@ -82,7 +83,7 @@ export default function TestimonialCarousel() {
                                         </p>
 
                                         <p className="mt-4 text-sm font-semibold text-foreground md:text-base">
-                                            &ndash; {item.name}
+                                            &ndash; {item.client_name}
                                         </p>
                                     </div>
                                 </div>
