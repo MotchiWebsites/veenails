@@ -1,7 +1,7 @@
 import SectionBlock from "@/components/home/SectionBlock";
 
 import { getAftercare } from "@/utils/queries/getAftercare";
-import { ContentItem } from "@/utils/types/contentItem";
+import type { ContentItem } from "@/utils/types/contentItem";
 
 export default async function AftercareSection() {
 
@@ -17,7 +17,7 @@ export default async function AftercareSection() {
                 {aftercareItems.map((item, index) => (
                     <div
                         key={item.title}
-                        className="flex flex-col md:flex-row items-center gap-4 rounded-2xl border border-border/40 bg-background p-5 shadow-sm"
+                        className="flex flex-col text-center md:text-left md:flex-row items-center gap-4 rounded-2xl border border-border/40 bg-background p-5 shadow-sm"
                     >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-button text-sm font-semibold text-button-text shadow-sm">
                             {index + 1}

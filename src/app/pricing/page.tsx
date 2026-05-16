@@ -3,14 +3,14 @@ import PricingGroupCard from "@/components/pricing/PricingGroupCard";
 import DesignTierCard from "@/components/pricing/DesignTierCard";
 import PolicyNote from "@/components/pricing/PolicyNote";
 
-import { getPricing, getDesignTiers } from "@/utils/queries/getPricing";
-import { getPolicies } from "@/utils/queries/getPolicies";
-
-import type { PricingGroup, DesignTier } from "@/utils/types/pricingItem";
-import { ContentItem } from "@/utils/types/contentItem";
-
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
+
+import { getPricing, getDesignTiers } from "@/utils/queries/getPricing";
+import type { PricingGroup, DesignTier } from "@/utils/types/pricingItem";
+
+import { getPolicies } from "@/utils/queries/getPolicies";
+import type { ContentItem } from "@/utils/types/contentItem";
 
 export default async function PricingPage() {
     const pricingGroups: PricingGroup[] = await getPricing();

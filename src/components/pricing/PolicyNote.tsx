@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { ContentItem } from "@/utils/types/contentItem";
+
 import DropdownItem from "@/components/ui/DropdownItem";
+
+import type { ContentItem } from "@/utils/types/contentItem";
 
 export default function PolicyNote({ policy }: { policy: ContentItem }) {
     const [open, setOpen] = useState(false);

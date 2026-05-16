@@ -1,5 +1,5 @@
-import { GalleryImage } from "@/content/gallery/gallery";
 import GalleryTile from "./GalleryTile";
+import type { GalleryImage } from "@/utils/types/galleryItem";
 
 export default function GalleryGrid({ images }: { images: GalleryImage[] }) {
     return (

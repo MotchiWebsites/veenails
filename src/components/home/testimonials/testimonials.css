@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .testimonial-swiper .swiper-slide {
@@ -14,7 +14,6 @@
     height: 100%;
     margin-top: auto;
     margin-bottom: auto;
-    overflow: visible;
 }
 
 .testimonial-swiper .swiper-pagination {

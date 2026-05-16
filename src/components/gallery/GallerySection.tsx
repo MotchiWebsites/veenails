@@ -1,6 +1,7 @@
 import SectionBlock from "@/components/home/SectionBlock";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
-import { GalleryGroup } from "@/content/gallery/gallery";
+
+import type { GalleryGroup } from "@/utils/types/galleryItem";
 
 export default function GallerySection({
     title,

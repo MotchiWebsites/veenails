@@ -8,12 +8,11 @@ import ServiceCard from "@/components/home/services/ServiceCard";
 import BookingCTA from "@/components/home/bookingCta/BookingCTA";
 import FAQSection from "@/components/home/faq/FAQSection";
 
-import { ServiceItem } from "@/utils/types/serviceItem";
 import { getServices } from "@/utils/queries/getService";
-
+import type { ServiceItem } from "@/utils/types/serviceItem";
 
 import { getTestimonials } from "@/utils/queries/getTestimonials";
-import { TestimonialItem } from "@/utils/types/testimonialItem";
+import type { TestimonialItem } from "@/utils/types/testimonialItem";
 
 
 export default async function Home() {
