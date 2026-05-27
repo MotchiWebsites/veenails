@@ -1,21 +1,23 @@
 {
-  "name": "Vee's Nail Studio",
-  "short_name": "Vee's Nails",
-  "icons": [
-    {
-      "src": "/web-app-manifest-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
-  "theme_color": "#fef1fe",
-  "background_color": "#fef1fe",
-  "display": "standalone"
+    "name": "Vee's Nail Studio",
+    "short_name": "Vee's Nails",
+    "description": "Vee's Nail Studio is run by a certified nail artist in downtown Toronto. Book gel nails, custom nail art, and modern manicure services for a relaxed, one-of-a-kind nail experience.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fef1fe",
+    "theme_color": "#fef1fe",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
 }
