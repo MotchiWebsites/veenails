@@ -201,3 +201,89 @@ h6 {
     color: var(--green);
     font-weight: 600;
 }
+
+
+.legal-copy {
+    color: #3d3338;
+}
+
+.legal-copy section {
+    padding-top: 0.75rem;
+}
+
+.legal-copy h2 {
+    margin-bottom: 0.9rem;
+    color: #b75b7c;
+    font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.legal-copy h3 {
+    margin-top: 1.35rem;
+    margin-bottom: 0.35rem;
+    color: #2b2528;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.legal-copy p {
+    margin-bottom: 0.85rem;
+    color: #3d3338;
+}
+
+.legal-copy ul {
+    margin-top: 0.35rem;
+    margin-left: 0;
+    list-style: none;
+    color: #3d3338;
+}
+
+.legal-copy li {
+    position: relative;
+    margin-bottom: 0.45rem;
+    padding-left: 1.15rem;
+}
+
+.legal-copy li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: #3d3338;
+}
+
+.legal-copy a {
+    color: #d86f99;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.legal-copy .legal-card {
+    margin-top: 1.5rem;
+    border-radius: 0.9rem;
+    border: 1px solid #f1dce7;
+    background: #fff5fa;
+    padding: 1rem 1.1rem;
+}
+
+.legal-effective-date {
+    margin-top: 2rem;
+    border-radius: 0.8rem;
+    background: #f7deec;
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2b2528;
+}
+
+.legal-intro {
+    margin-top: 1.5rem;
+    color: #3d3338;
+}
+
+.legal-logo {
+    box-shadow: 0 10px 28px rgba(216, 111, 153, 0.18);
+}
