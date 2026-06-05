@@ -8,6 +8,8 @@ export default function Footer() {
         { name: "Gallery", href: "/gallery" },
         { name: "Booking", href: "/booking" },
         { name: "Contact", href: "/contact" },
+        { name: "Privacy Policy", href: "/privacy-policy" },
+        { name: "Terms of Service", href: "/terms-of-service" },
     ];
 
     const redirectURL =
