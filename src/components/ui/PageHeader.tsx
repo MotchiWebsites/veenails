@@ -9,7 +9,7 @@ export default function PageHeader({
 }: {
     intro: string;
     title: string;
-    description: string;
+    description?: string;
     redirectURL?: string;
     redirectPage?: string;
 }) {
@@ -25,7 +25,9 @@ export default function PageHeader({
             <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
                 {title}
             </h1>
-            <p className="mt-4 text-muted md:text-lg">{description}</p>
+            {description && (
+                <p className="mt-4 text-muted md:text-lg">{description}</p>
+            )}
 
             {redirectURL && redirectPage && (
                 <div className="mt-8 flex flex-col items-center justify-center gap-4 w-full sm:flex-row">

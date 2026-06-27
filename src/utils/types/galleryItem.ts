@@ -1,7 +1,6 @@
 export interface GalleryImage {
     src: string;
     alt: string;
-    size?: "square" | "tall" | "wide";
     caption?: string;
 }
 
