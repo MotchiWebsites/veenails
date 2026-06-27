@@ -22,7 +22,7 @@ export const getGallery = async () => {
 
     const { data: imageData, error: imageError } = await supabase
         .from("gallery_images")
-        .select("group_id, src, alt, size, caption")
+        .select("group_id, src, alt")
         .eq("active", true)
         .order("display_order", { ascending: true });
 
@@ -46,8 +46,6 @@ export const getGallery = async () => {
             .map((image) => ({
                 src: image.src,
                 alt: image.alt,
-                size: image.size,
-                caption: image.caption ?? undefined,
             })),
     }));
 };

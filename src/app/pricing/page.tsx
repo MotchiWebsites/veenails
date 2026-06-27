@@ -1,7 +1,7 @@
 import PricingSection from "@/components/pricing/PricingSection";
 import PricingGroupCard from "@/components/pricing/PricingGroupCard";
 import DesignTierCard from "@/components/pricing/DesignTierCard";
-import PolicyNote from "@/components/pricing/PolicyNote";
+import PoliciesSection from "@/components/home/policies/PoliciesSection";
 
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
@@ -11,6 +11,7 @@ import type { PricingGroup, DesignTier } from "@/utils/types/pricingItem";
 
 import { getPolicies } from "@/utils/queries/getPolicies";
 import type { ContentItem } from "@/utils/types/contentItem";
+import Reveal from "@/components/ui/animation/Reveal";
 
 export default async function PricingPage() {
     const pricingGroups: PricingGroup[] = await getPricing();
@@ -37,55 +38,57 @@ export default async function PricingPage() {
                 redirectPage="View Gallery"
             />
 
-            <PricingSection
-                id="services"
-                title="Service Pricing"
-                description="Base pricing by service type, length, appointment type, and removals."
-                background="bg-surface"
-            >
-                <div className="grid gap-6 lg:grid-cols-2">
-                    {pricingGroups.map((group) => {
-                        // Supabase group IDs are UUIDs, so use the title for now
-                        // to identify the Removals section until a stable slug column is added.
-                        const isRemovalsGroup = group.title.toLowerCase() === "removals";
+            <Reveal>
+                <PricingSection
+                    id="services"
+                    title="Service Pricing"
+                    description="Base pricing by service type, length, appointment type, and removals."
+                    background="bg-surface"
+                >
+                    <div className="grid gap-6 lg:grid-cols-2">
+                        {pricingGroups.map((group) => {
+                            // Supabase group IDs are UUIDs, so use the title for now
+                            // to identify the Removals section until a stable slug column is added.
+                            const isRemovalsGroup =
+                                group.title.toLowerCase() === "removals";
 
-                        return (
-                            <PricingGroupCard
-                                key={group.id}
-                                group={group}
-                                id={isRemovalsGroup ? "removals" : undefined}
-                                tierSummary={isRemovalsGroup ? undefined : activeDesignTiers}
-                            />
-                        );
-                    })}
-                </div>
-            </PricingSection>
+                            return (
+                                <PricingGroupCard
+                                    key={group.id}
+                                    group={group}
+                                    id={
+                                        isRemovalsGroup ? "removals" : undefined
+                                    }
+                                    tierSummary={
+                                        isRemovalsGroup
+                                            ? undefined
+                                            : activeDesignTiers
+                                    }
+                                />
+                            );
+                        })}
+                    </div>
+                </PricingSection>
+            </Reveal>
 
-            <PricingSection
-                id="design-tiers"
-                title="Design Levels"
-                description="Use these examples to choose the design tier that best matches your booking."
-                background="bg-surface-2"
-            >
-                <div className="grid gap-6 xl:gap-12 md:grid-cols-2 max-w-5xl mx-auto space-evenly">
-                    {activeDesignTiers.map((tier) => (
-                        <DesignTierCard key={tier.id} tier={tier} />
-                    ))}
-                </div>
-            </PricingSection>
+            <Reveal>
+                <PricingSection
+                    id="design-tiers"
+                    title="Design Levels"
+                    description="Use these examples to choose the design tier that best matches your booking."
+                    background="bg-surface-2"
+                >
+                    <div className="grid gap-6 xl:gap-12 md:grid-cols-2 max-w-5xl mx-auto space-evenly">
+                        {activeDesignTiers.map((tier) => (
+                            <DesignTierCard key={tier.id} tier={tier} />
+                        ))}
+                    </div>
+                </PricingSection>
+            </Reveal>
 
-            <PricingSection
-                id="policies"
-                title="Booking Policies"
-                description="A few things to keep in mind when reviewing pricing."
-                background="bg-surface-2"
-            >
-                <div className="grid items-start gap-4 md:grid-cols-2">
-                    {policyItems.map((policy) => (
-                        <PolicyNote key={policy.title} policy={policy} />
-                    ))}
-                </div>
-            </PricingSection>
+            <Reveal>
+                <PoliciesSection id="policies" />
+            </Reveal>
         </main>
     );
 }

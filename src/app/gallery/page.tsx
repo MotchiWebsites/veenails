@@ -1,4 +1,5 @@
 import GallerySection from "@/components/gallery/GallerySection";
+import Reveal from "@/components/ui/animation/Reveal";
 import FloatingSectionNav from "@/components/ui/FloatingSectionNav";
 import PageHeader from "@/components/ui/PageHeader";
 
@@ -32,11 +33,12 @@ export default async function GalleryPage() {
             />
 
             {gallerySections.map((section) => (
-                <GallerySection
-                    key={section.title}
-                    id={section.id}
-                    {...section}
-                />
+                <Reveal key={section.title}>
+                    <GallerySection
+                        id={section.id}
+                        {...section}
+                    />
+                </Reveal>
             ))}
         </main>
     );

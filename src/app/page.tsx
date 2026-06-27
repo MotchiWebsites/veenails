@@ -8,67 +8,84 @@ import ServiceCard from "@/components/home/services/ServiceCard";
 import BookingCTA from "@/components/home/bookingCta/BookingCTA";
 import FAQSection from "@/components/home/faq/FAQSection";
 
+import PageEnter from "@/components/ui/animation/PageEnter";
+import Reveal from "@/components/ui/animation/Reveal";
+
 import { getServices } from "@/utils/queries/getService";
 import type { ServiceItem } from "@/utils/types/serviceItem";
 
 import { getTestimonials } from "@/utils/queries/getTestimonials";
 import type { TestimonialItem } from "@/utils/types/testimonialItem";
 
-
 export default async function Home() {
-    const testimonials: TestimonialItem[] = await getTestimonials();
-    const rawServiceItems = await getServices();
+    const [testimonials, rawServiceItems] = await Promise.all([
+        getTestimonials(),
+        getServices(),
+    ]);
+
+    const typedTestimonials = testimonials as TestimonialItem[];
+
     const serviceItems: ServiceItem[] = rawServiceItems.map((item) => ({
         name: item.title,
         description: item.service_description,
     }));
 
     return (
-        <main className="min-h-screen bg-background text-foreground flex flex-col space-y-12 md:space-y-18">
-            {/* Hero */}
-            <HeroSection id="hero" />
+        <main className="flex min-h-screen flex-col space-y-12 bg-background text-foreground md:space-y-18">
+            <PageEnter>
+                <HeroSection id="hero" />
+            </PageEnter>
 
-            {/* Policies */}
-            <PoliciesSection id="policies" />
+            <Reveal>
+                <SectionBlock
+                    title="Testimonials"
+                    description="Hear from my clients about their experiences at Vee's Nail Studio."
+                    background="bg-surface"
+                    id="testimonials"
+                >
+                    <TestimonialCarousel testimonials={typedTestimonials} />
+                </SectionBlock>
+            </Reveal>
 
-            {/* Aftercare */}
-            <AftercareSection />
+            <Reveal>
+                <PoliciesSection id="policies" />
+            </Reveal>
 
-            {/* Testimonials */}
-            <SectionBlock
-                title="Testimonials"
-                description="Hear from our clients about their experiences at Vee's Nail Studio."
-                background="bg-surface"
-                id="testimonials"
-            >
-                <TestimonialCarousel 
-                    testimonials={testimonials}
-                />
-            </SectionBlock>
+            <Reveal>
+                <AftercareSection />
+            </Reveal>
 
-            {/* Services */}
-            <SectionBlock
-                title="Popular Services"
-                description="Explore our most requested nail care services."
-                background="bg-background"
-                id="services"
-            >
-                <div className="mt-10 grid gap-6 md:grid-cols-3">
-                    {serviceItems.map((item) => (
-                        <ServiceCard
-                            key={item.name}
-                            title={item.name}
-                            description={item.description}
-                        />
-                    ))}
-                </div>
-            </SectionBlock>
+            <Reveal>
+                <SectionBlock
+                    title="Popular Services"
+                    description="Explore our most requested nail care services."
+                    background="bg-background"
+                    id="services"
+                >
+                    <div className="mt-10 grid gap-6 md:grid-cols-3">
+                        {serviceItems.map((item, index) => (
+                            <Reveal
+                                key={item.name}
+                                variant="card"
+                                delay={index * 0.1}
+                            >
+                                <ServiceCard
+                                    title={item.name}
+                                    description={item.description}
+                                />
+                            </Reveal>
+                        ))}
+                    </div>
+                </SectionBlock>
+            </Reveal>
 
-            {/* Booking CTA */}
-            <BookingCTA id="booking" />
+            <Reveal>
+                <BookingCTA id="booking" />
+            </Reveal>
 
-            {/* FAQ */}
-            <FAQSection id="faq" />
+            <Reveal>
+                <FAQSection id="faq" />
+            </Reveal>
         </main>
     );
 }

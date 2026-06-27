@@ -3,41 +3,43 @@
 :root {
     /* Base */
     --background: #fff7fb;
-    --foreground: #251a20;
+    --foreground: #2a1b22;
 
     /* Surfaces */
     --surface: #ffffff;
-    --surface-2: #f9e3ed; /* soft pink */
-    --surface-3: #f2e0d2; /* light cream */
+    --surface-2: #f7e6f2; /* booking soft pink */
+    --surface-3: #fff0f7; /* booking pale pink */
+    --surface-4: #fffaf4; /* keeps existing theme mapping valid */
 
     /* Borders */
-    --border: #ead6df;
+    --border: #efd3e4;
 
     /* Text */
-    --muted: #6f5963;
+    --muted: #6b4b5a;
 
-    /* Brand */
-    --pink-light: #f2abc0;
-    --pink-main: #d881a2;
-    --pink-hover: #c27491;
-    --pink-active: #b05f7d;
+    /* Brand
+       Existing landing names retained, values aligned to booking scale */
+    --pink-light: #f6bfd5;
+    --pink-main: #d65d85;
+    --pink-hover: #bc4b72;
+    --pink-active: #943757;
 
-    --green-light: #9dad71;
-    --green: #495706;
+    --green-light: #e7eedb;
+    --green: #425638;
 
     /* Links */
-    --link: var(--pink-main);
-    --link-hover: var(--pink-hover);
+    --link: #bc4b72;
+    --link-hover: #943757;
 
     /* Buttons */
-    --button: var(--pink-main);
-    --button-hover: var(--pink-hover);
-    --button-active: var(--pink-active);
+    --button: #d65d85;
+    --button-hover: #bc4b72;
+    --button-active: #943757;
     --button-text: #ffffff;
 
-    --button-secondary: var(--surface-2);
-    --button-secondary-hover: #f2c8dc;
-    --button-secondary-text: var(--foreground);
+    --button-secondary: #f7e6f2;
+    --button-secondary-hover: #f9ddeb;
+    --button-secondary-text: #3a2430;
 }
 
 @theme inline {
@@ -53,11 +55,34 @@
 
     --color-muted: var(--muted);
 
+    /* Keeps your old landing class names working */
     --color-light-pink: var(--pink-light);
     --color-pink-main: var(--pink-main);
     --color-dark-pink: var(--pink-active);
+
     --color-light-green: var(--green-light);
     --color-dark-green: var(--green);
+
+    /* Adds the booking palette names for new landing-page work */
+    --color-pink-50: #fff2fa;
+    --color-pink-100: #f9ddeb;
+    --color-pink-200: #f6bfd5;
+    --color-pink-300: #f29ab9;
+    --color-pink-400: #e7779d;
+    --color-pink-500: #d65d85;
+    --color-pink-600: #bc4b72;
+    --color-pink-700: #943757;
+
+    --color-green-50: #f4f7ee;
+    --color-green-100: #e7eedb;
+    --color-green-200: #d7e3c3;
+    --color-green-500: #7b9a63;
+    --color-green-600: #637f4f;
+    --color-green-700: #425638;
+
+    --color-cream: #fff8ec;
+    --color-cream-2: #f7ecd9;
+
     --color-link: var(--link);
     --color-link-hover: var(--link-hover);
 
@@ -70,12 +95,12 @@
     --color-button-secondary-hover: var(--button-secondary-hover);
     --color-button-secondary-text: var(--button-secondary-text);
 
-    --color-ring: var(--pink-active);
+    /* Booking uses a softer, branded focus ring */
+    --color-ring: rgba(214, 93, 133, 0.35);
 
     --font-sans: var(--font-sans);
     --font-mono: var(--font-mono);
 }
-
 /* Base page */
 html {
     scroll-behavior: smooth;
@@ -99,29 +124,11 @@ a:hover {
 
 /* Shared button base */
 @utility btn-primary {
-    @apply inline-flex items-center justify-center gap-2
-    rounded-xl px-5 py-3 text-sm font-semibold
-    no-underline
-    bg-button text-button-text
-    transition-all duration-200 ease-out
-    shadow-sm shadow-black/5
-    focus-visible:outline-none
-    focus-visible:ring-2 focus-visible:ring-ring
-    focus-visible:ring-offset-2 focus-visible:ring-offset-background
-    disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-button px-5 py-3 text-sm font-semibold text-button-text shadow-sm shadow-black/5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-button-hover hover:shadow-md active:translate-y-0 active:bg-button-active active:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50;
 }
 
 @utility btn-secondary {
-    @apply inline-flex items-center justify-center gap-2
-    rounded-xl px-5 py-3 text-sm font-semibold
-    no-underline
-    bg-button-secondary text-button-secondary-text
-    border border-border
-    transition-all duration-200 ease-out
-    focus-visible:outline-none
-    focus-visible:ring-2 focus-visible:ring-ring
-    focus-visible:ring-offset-2 focus-visible:ring-offset-background
-    disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border/60 bg-button-secondary-hover px-5 py-3 text-sm font-medium text-button-secondary-text shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-pink-200 hover:text-foreground hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50;
 }
 
 /* Link-style button base */
@@ -201,7 +208,6 @@ h6 {
     color: var(--green);
     font-weight: 600;
 }
-
 
 .legal-copy {
     color: #3d3338;
