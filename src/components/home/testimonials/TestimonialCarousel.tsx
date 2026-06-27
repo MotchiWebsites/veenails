@@ -108,14 +108,7 @@ export default function TestimonialCarousel({
                             modifier: 0.9,
                             slideShadows: false,
                         }}
-                        navigation={
-                            hasMultipleTestimonials
-                                ? {
-                                      prevEl: previousButtonRef.current,
-                                      nextEl: nextButtonRef.current,
-                                  }
-                                : false
-                        }
+                        navigation={hasMultipleTestimonials}
                         pagination={
                             hasMultipleTestimonials
                                 ? {

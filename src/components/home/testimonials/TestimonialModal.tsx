@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
@@ -15,17 +15,23 @@ type TestimonialModalProps = {
 const FOCUSABLE_ELEMENTS =
     'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+const subscribeToHydration = () => () => {};
+
+function useIsHydrated() {
+    return useSyncExternalStore(
+        subscribeToHydration,
+        () => true,
+        () => false,
+    );
+}
+
 export default function TestimonialModal({
     testimonial,
     onClose,
 }: TestimonialModalProps) {
-    const [isMounted, setIsMounted] = useState(false);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
     const shouldReduceMotion = useReducedMotion();
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+    const isHydrated = useIsHydrated();
 
     useEffect(() => {
         if (!testimonial) return;
@@ -80,10 +86,6 @@ export default function TestimonialModal({
         };
     }, [testimonial, onClose]);
 
-    if (!isMounted) {
-        return null;
-    }
-
     const panelInitial = shouldReduceMotion
         ? { opacity: 0 }
         : { opacity: 0, scale: 0.96, y: 16 };
@@ -95,6 +97,10 @@ export default function TestimonialModal({
     const panelExit = shouldReduceMotion
         ? { opacity: 0 }
         : { opacity: 0, scale: 0.98, y: 8 };
+
+    if (!isHydrated) {
+        return null;
+    }
 
     return createPortal(
         <AnimatePresence>

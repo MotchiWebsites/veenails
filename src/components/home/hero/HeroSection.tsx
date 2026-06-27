@@ -18,9 +18,9 @@ export default function HeroSection({ id = "" }: { id?: string }) {
                 />
 
                 <div className="mt-6">
-                    Hi, I'm Vee{" "}
+                    Hi, I&apos;m Vee{" "}
                     <CiHeart className="inline-flex mb-1 text-2xl text-pink-500" />{" "}
-                    Welcome to my little nail space. I'm a Toronto-based nail
+                    Welcome to my little nail space. I&apos;m a Toronto-based nail
                     artist specializing in Gel-X, structured manicure, and
                     detailed nail art. I focus on quality and longevity so your
                     set not only looks beautiful, but lasts at least 4 weeks
