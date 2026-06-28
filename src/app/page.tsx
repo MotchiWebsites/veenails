@@ -31,61 +31,63 @@ export default async function Home() {
     }));
 
     return (
-        <main className="flex min-h-screen flex-col space-y-12 bg-background text-foreground md:space-y-18">
+        <main className="flex min-h-screen flex-col bg-background text-foreground">
             <PageEnter>
                 <HeroSection id="hero" />
             </PageEnter>
 
-            <Reveal>
-                <SectionBlock
-                    title="Testimonials"
-                    description="Hear from my clients about their experiences at Vee's Nail Studio."
-                    background="bg-surface"
-                    id="testimonials"
-                >
-                    <TestimonialCarousel testimonials={typedTestimonials} />
-                </SectionBlock>
-            </Reveal>
+            <div className="space-y-8 md:space-y-12 xl:space-y-16">
+                <Reveal>
+                    <SectionBlock
+                        title="Testimonials"
+                        description="Hear from my clients about their experiences at Vee's Nail Studio."
+                        background="bg-surface"
+                        id="testimonials"
+                    >
+                        <TestimonialCarousel testimonials={typedTestimonials} />
+                    </SectionBlock>
+                </Reveal>
 
-            <Reveal>
-                <PoliciesSection id="policies" />
-            </Reveal>
+                <Reveal>
+                    <PoliciesSection id="policies" />
+                </Reveal>
 
-            <Reveal>
-                <AftercareSection />
-            </Reveal>
+                <Reveal>
+                    <AftercareSection />
+                </Reveal>
 
-            <Reveal>
-                <SectionBlock
-                    title="Popular Services"
-                    description="Explore our most requested nail care services."
-                    background="bg-background"
-                    id="services"
-                >
-                    <div className="mt-10 grid gap-6 md:grid-cols-3">
-                        {serviceItems.map((item, index) => (
-                            <Reveal
-                                key={item.name}
-                                variant="card"
-                                delay={index * 0.1}
-                            >
-                                <ServiceCard
-                                    title={item.name}
-                                    description={item.description}
-                                />
-                            </Reveal>
-                        ))}
-                    </div>
-                </SectionBlock>
-            </Reveal>
+                <Reveal>
+                    <SectionBlock
+                        title="Popular Services"
+                        description="Explore our most requested nail care services."
+                        background="bg-background"
+                        id="services"
+                    >
+                        <div className="mt-10 grid gap-6 md:grid-cols-3">
+                            {serviceItems.map((item, index) => (
+                                <Reveal
+                                    key={item.name}
+                                    variant="card"
+                                    delay={index * 0.1}
+                                >
+                                    <ServiceCard
+                                        title={item.name}
+                                        description={item.description}
+                                    />
+                                </Reveal>
+                            ))}
+                        </div>
+                    </SectionBlock>
+                </Reveal>
 
-            <Reveal>
-                <BookingCTA id="booking" />
-            </Reveal>
+                <Reveal>
+                    <BookingCTA id="booking" />
+                </Reveal>
 
-            <Reveal>
-                <FAQSection id="faq" />
-            </Reveal>
+                <Reveal>
+                    <FAQSection id="faq" />
+                </Reveal>
+            </div>
         </main>
     );
 }

@@ -55,7 +55,7 @@ export default function TestimonialCarousel({
 
     return (
         <>
-            <section className="mt-10" aria-label="Client testimonials">
+            <section aria-label="Client testimonials">
                 <div className="relative mx-auto max-w-4xl px-0 md:px-16">
                     {hasMultipleTestimonials && (
                         <>
@@ -139,7 +139,7 @@ export default function TestimonialCarousel({
                                 key={`${item.client_name}-${index}`}
                                 className="min-h-full"
                             >
-                                <article className="mx-auto flex min-h-100 max-w-full items-center rounded-2xl border border-border/50 bg-background p-5 shadow-sm sm:min-h-92 sm:max-w-2xl sm:p-7 md:min-h-88 md:p-10">
+                                <article className="mx-auto flex min-h-100 w-full items-center rounded-2xl border border-border/50 bg-background p-5 shadow-sm sm:min-h-92 sm:max-w-2xl sm:p-7 md:min-h-88 md:p-10 my-4">
                                     <TestimonialSlideContent
                                         item={item}
                                         onReadMore={openModal}
