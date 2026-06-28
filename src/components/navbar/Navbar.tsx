@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Squash as Hamburger } from "hamburger-react";
 import ButtonLink from "../ui/ButtonLink";
@@ -43,6 +43,7 @@ function NavLink({
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const drawerRef = useRef<HTMLElement>(null);
 
     const close = () => setOpen(false);
 
@@ -51,6 +52,25 @@ export default function Navbar() {
         document.body.style.overflow = open ? "hidden" : "";
         return () => {
             document.body.style.overflow = "";
+        };
+    }, [open]);
+
+    useEffect(() => {
+        if (!open) return;
+
+        const handlePointerDown = (event: PointerEvent) => {
+            if (
+                event.target instanceof Node &&
+                !drawerRef.current?.contains(event.target)
+            ) {
+                close();
+            }
+        };
+
+        document.addEventListener("pointerdown", handlePointerDown);
+
+        return () => {
+            document.removeEventListener("pointerdown", handlePointerDown);
         };
     }, [open]);
 
@@ -128,6 +148,7 @@ export default function Navbar() {
 
             {/* Drawer */}
             <aside
+                ref={drawerRef}
                 className={[
                     "fixed left-0 top-0 z-50 w-full md:hidden",
                     "border-b-2 border-border bg-background/98 backdrop-blur",
@@ -147,7 +168,7 @@ export default function Navbar() {
                                 alt="Vee's Nail Studio Logo"
                                 width={600}
                                 height={600}
-                                className="rounded-full border-2 border-border"
+                                className="h-10 w-10 shrink-0 rounded-full border-2 border-border object-cover"
                             />
                             <p className="text-base font-semibold">
                                 Vee&apos;s Nail Studio
