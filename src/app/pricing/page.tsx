@@ -47,21 +47,28 @@ export default async function PricingPage() {
                     <div className="grid gap-6 lg:grid-cols-2">
                         {pricingGroups.map((group) => {
                             // Supabase group IDs are UUIDs, so use the title for now
-                            // to identify the Removals section until a stable slug column is added.
-                            const isRemovalsGroup =
-                                group.title.toLowerCase() === "removals";
+                            // to identify groups until a stable slug column is added.
+                            const normalizedTitle = group.title
+                                .trim()
+                                .toLowerCase();
+                            const showsDesignTiers = ![
+                                "freestyle",
+                                "removals",
+                            ].includes(normalizedTitle);
 
                             return (
                                 <PricingGroupCard
                                     key={group.id}
                                     group={group}
                                     id={
-                                        isRemovalsGroup ? "removals" : undefined
+                                        normalizedTitle === "removals"
+                                            ? "removals"
+                                            : undefined
                                     }
                                     tierSummary={
-                                        isRemovalsGroup
-                                            ? undefined
-                                            : activeDesignTiers
+                                        showsDesignTiers
+                                            ? activeDesignTiers
+                                            : undefined
                                     }
                                 />
                             );
