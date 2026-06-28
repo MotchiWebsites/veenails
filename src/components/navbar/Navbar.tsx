@@ -72,8 +72,8 @@ export default function Navbar() {
                         <Image
                             src="/logo.png"
                             alt="Vee's Nail Studio Logo"
-                            sizes="40px"
-                            fill
+                            width={600}
+                            height={600}
                             className="object-cover"
                             priority
                         />
@@ -145,8 +145,8 @@ export default function Navbar() {
                             <Image
                                 src="/logo.png"
                                 alt="Vee's Nail Studio Logo"
-                                width={30}
-                                height={30}
+                                width={600}
+                                height={600}
                                 className="rounded-full border-2 border-border"
                             />
                             <p className="text-base font-semibold">
