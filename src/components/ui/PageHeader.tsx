@@ -24,7 +24,7 @@ export default function PageHeader({
                     {intro}
                 </p>
             )}
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+            <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
                 {title}
             </h1>
             {description && (

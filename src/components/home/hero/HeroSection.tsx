@@ -14,10 +14,10 @@ export default function HeroSection({ id = "" }: { id?: string }) {
                 <Image
                     src="/logo.png"
                     alt="Vee's Nail Studio Logo"
-                    width={120}
-                    height={120}
+                    width={600}
+                    height={600}
                     priority
-                    className="h-auto w-24 opacity-80 sm:w-28"
+                    className="h-auto w-32 opacity-80 md:w-36 lg:w-42 xl:w-48"
                 />
             </div>
 
