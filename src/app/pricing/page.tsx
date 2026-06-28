@@ -31,7 +31,6 @@ export default async function PricingPage() {
             />
 
             <PageHeader
-                intro="Clear pricing, thoughtful booking, and room for custom detail"
                 title="Services & Pricing"
                 description="Explore core services, add-ons, and design tiers. Final pricing can vary slightly depending on complexity and any changes made during the appointment."
                 redirectURL="/gallery"

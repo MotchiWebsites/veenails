@@ -108,7 +108,7 @@ export default function Footer() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Mitchi Motcho Websites
+                            Motchi Websites
                         </a>
                     </p>
                 </div>

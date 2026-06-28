@@ -7,7 +7,7 @@ export default function PageHeader({
     redirectURL,
     redirectPage,
 }: {
-    intro: string;
+    intro?: string;
     title: string;
     description?: string;
     redirectURL?: string;
@@ -19,9 +19,11 @@ export default function PageHeader({
 
     return (
         <div className="mx-auto max-w-4xl px-6 text-center">
-            <p className="text-sm font-medium tracking-wide text-dark-green">
-                {intro}
-            </p>
+            {intro && (
+                <p className="text-sm font-medium tracking-wide text-dark-green">
+                    {intro}
+                </p>
+            )}
             <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
                 {title}
             </h1>
