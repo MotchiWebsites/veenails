@@ -30,6 +30,7 @@ export default function TestimonialModal({
     onClose,
 }: TestimonialModalProps) {
     const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const modalRef = useRef<HTMLElement>(null);
     const shouldReduceMotion = useReducedMotion();
     const isHydrated = useIsHydrated();
 
@@ -77,11 +78,22 @@ export default function TestimonialModal({
             }
         };
 
+        const handlePointerDown = (event: PointerEvent) => {
+            if (
+                event.target instanceof Node &&
+                !modalRef.current?.contains(event.target)
+            ) {
+                onClose();
+            }
+        };
+
         window.addEventListener("keydown", handleKeyDown);
+        document.addEventListener("pointerdown", handlePointerDown);
 
         return () => {
             document.body.style.overflow = originalOverflow;
             window.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("pointerdown", handlePointerDown);
             previouslyFocusedElement?.focus();
         };
     }, [testimonial, onClose]);
@@ -118,6 +130,7 @@ export default function TestimonialModal({
                     }}
                 >
                     <motion.section
+                        ref={modalRef}
                         id="testimonial-modal"
                         role="dialog"
                         aria-modal="true"
