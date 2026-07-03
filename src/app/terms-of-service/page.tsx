@@ -1,9 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata = {
-    title: "Terms of Service | Vee's Nail Studio",
+export const metadata: Metadata = {
+    title: "Terms of Service",
     description:
         "Terms of Service for Vee's Nail Studio website and booking system.",
+    alternates: {
+        canonical: "/terms-of-service",
+    },
 };
 
 export default function TermsOfServicePage() {

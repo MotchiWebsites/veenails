@@ -1,15 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata = {
-    title: "Privacy Policy | Vee's Nail Studio",
+export const metadata: Metadata = {
+    title: "Privacy Policy",
     description:
         "Privacy Policy for Vee's Nail Studio website and booking system.",
+    alternates: {
+        canonical: "/privacy-policy",
+    },
 };
 
 export default function PrivacyPolicyPage() {
     return (
         <main className="min-h-screen bg-white text-[#2b2528]">
-
             <section className="mx-auto max-w-4xl px-6 py-12 md:py-16">
                 <div className="mb-8 flex justify-center">
                     <Image
@@ -322,19 +325,6 @@ export default function PrivacyPolicyPage() {
                         </p>
                     </section>
 
-                    <div className="rounded-xl border border-[#f1dce7] bg-[#fff5fa] p-4 text-sm">
-                        <p>
-                            PDF version:{" "}
-                            <a
-                                className="font-semibold text-[#d86f99] underline"
-                                href="/legal/privacy-policy.pdf"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                Download Privacy Policy PDF
-                            </a>
-                        </p>
-                    </div>
                 </div>
             </section>
         </main>
